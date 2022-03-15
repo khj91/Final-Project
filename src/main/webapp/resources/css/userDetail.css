@@ -1,0 +1,299 @@
+#header {
+	height: 240px;
+	background-image: linear-gradient(45deg, #082546, #243B55);
+	display: flex;
+	flex-direction: row;
+	padding: 40px;
+	align-items: center;
+}
+
+#profileImg {
+	background-color: #fff;
+	width: 130px;
+	height: 130px;
+	border-radius: 65px;
+}
+
+#headerInfo {
+	padding-left: 40px;
+}
+
+#profileEmailDiv {
+	color: blue;
+}
+
+#profileEmailDiv, #scoreDiv {
+	margin: 10px;
+}
+
+#profileEmailDiv span:nth-child(2) {
+	color: #e6e6e6;
+}
+
+#profileEmail {
+	color: #fff;
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+#scoreDiv {
+	display: flex;
+}
+
+.scoreBlock {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.scoreText {
+	color: #fff;
+	margin-left: 10px;
+}
+
+.score {
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 25px;
+	background-color: #fff;
+}
+
+.scoreBlock:nth-child(2) {
+	margin-left: 40px;
+}
+
+.detailMenu {
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	border-bottom: 1px solid #e7e7e7;
+}
+
+.menuBtn {
+	background-color: #fff;
+	color: black;
+	border: none;
+	font-size: 16px;
+	padding: 0px 10px;
+}
+
+.menuBtn:hover {
+	color: #e6e6e6;
+	border-bottom: 3px solid blue;
+}
+
+.menuBtn:selected {
+	background-color: yellow;
+}
+
+/* 카드 */
+#movieContainer {
+	padding: 0 50px;
+}
+
+#listTitleText {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.listTitle {
+	padding: 15px 0px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.left a {
+	margin-left: 10px;
+	width: 20px;
+	padding: 5px 0px;
+}
+
+.platformBtn {
+	color: black;
+	font-size: 17px;
+}
+
+.platformCnt {
+	font-size: 12px;
+	color: #dd54be;
+}
+
+.movie {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid #e6e6e6;
+	border-radius: 8px;
+	-webkit-box-shadow: 1px 1px 9px -1px rgba(0, 0, 0, 0.35);
+	box-shadow: 1px 1px 9px -1px rgba(0, 0, 0, 0.35);
+	margin-bottom: 25px;
+}
+
+.contentDiv {
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.imageDiv img {
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+
+.titleDiv {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.rating {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #e6e6e6;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+}
+
+.titleText a {
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+	color: #000;
+	font-weight: 600;
+	font-size: 1.2rem;
+}
+
+.titleText a:hover {
+	color: rgb(4, 199, 199);
+}
+
+.titleText {
+	color: #9c9a9a;
+	font-size: 0.8rem;
+	margin-left: 10px;
+}
+
+.descDiv {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3; /* 라인수 */
+	-webkit-box-orient: vertical;
+	word-wrap: break-word;
+}
+
+.btnDiv ul {
+	display: flex;
+	flex-direction: row;
+	margin-top: 1rem;
+	margin-bottom: 0;
+}
+
+.btnDiv li {
+	display: flex;
+	align-items: center;
+	margin-right: 20px;
+	color: #9c9a9a;
+}
+
+.btnDiv .btn {
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	color: #9c9a9a;
+	border: 1px solid #9c9a9a;
+	margin-right: 10px;
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* star */
+.star {
+	position: relative;
+	font-size: 2rem;
+	color: #ddd;
+}
+
+.star input {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.star span {
+	width: 0;
+	position: absolute;
+	left: 0;
+	color: #ffc107;
+	overflow: hidden;
+	pointer-events: none;
+}
+/*  */
+.content {
+	padding: 20px;
+}
+
+.stats {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.content h2 {
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+.statCnt {
+	margin: 0;
+}
+
+.statCnt {
+	font-size: 3rem;
+	font-weight: bolder;
+	color: #082546;
+}
+
+.rateDist{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#params, #graph {
+	display: flex;
+	flex-direction: row;
+}
+
+.rateDist div {
+	display:flex;
+	flex-direction: column;
+	align-items:center;
+}
+
+#graph {
+	align-items: flex-end;
+}
+
+#graph .colorDiv {
+	width: 20px;
+}
+
+#params p {
+	width: 20px;
+	text-align:center;
+}

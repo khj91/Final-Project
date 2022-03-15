@@ -1,0 +1,49 @@
+main {
+  padding: 50px 100px;
+}
+
+.title {
+  margin-bottom: 100px;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #e6e6e6;
+  padding: 8px;
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 5px;
+}
+
+input:focus {
+  border: 1px solid skyblue;
+}
+
+#loginBtn {
+  background-color: rgb(91, 189, 250);
+  color: #fff;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+#loginBtn:hover {
+  background-color: black;
+}
+
+.btnDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+  margin-top: 30px;
+}
+
+.btnDiv a {
+  color: rgb(91, 189, 250);
+  text-decoration: none;
+}
+
+.btnDiv a:hover {
+  text-decoration: underline;
+}

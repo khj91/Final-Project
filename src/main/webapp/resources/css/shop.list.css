@@ -1,0 +1,18 @@
+@charset "UTF-8";
+.wrap {
+width: 100px;
+height: 200px;
+}
+.list {
+ width: 100px;
+ height: 55px;
+ border: 1px solid #000;
+ float: left;
+ margin: 5px;
+ display:inline;
+ background-color: #000;
+ 
+}
+ul, li {
+ list-style: none;	
+}

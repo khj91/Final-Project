@@ -1,0 +1,39 @@
+@charset "UTF-8";
+        *{margin:0; padding: 0;}
+ 
+        h1 {width: 360px; margin: 0 auto; text-align: center;
+            color: blueviolet;
+            padding-top: 20px;
+        }
+      
+        p{padding: 8px 0px;}
+        .container{
+            display: flex;
+            flex-flow: row wrap;
+            justify-items: center;
+            justify-content: center;
+        }
+
+        .container > div{
+            flex-basis:  25%;
+            flex : 0;
+            margin: 8px;
+            border:1px solid rgb(252, 252, 252);
+            padding: 8px;
+            cursor: pointer;
+            box-sizing: border-box;
+
+        }
+        .container > div:hover {
+            border:1px solid rebeccapurple;
+        }
+        .buttonWrapper{
+            width: 100vs;
+            text-align: center;
+        }
+        .rebBtn{
+            width: 120px;
+            padding: 8px 15px;
+            margin: 10px auto;
+        }
+

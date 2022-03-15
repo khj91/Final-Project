@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springprj.www.repository.user.UserDAO">
+
+	<insert id="insertUser" parameterType="uvo">
+		insert into user(email, pwd, name, nick_name
+			<if test="profileImg != null">
+			,profile
+			</if>
+			<if test="grade gt 0">
+			,grade
+			</if>
+		)
+		values(#{email}, #{pwd}, #{name}, #{nickName}
+			<if test="profileImg != null">
+			,#{profileImg}
+			</if>
+			<if test="grade gt 0">
+			,#{grade}
+			</if>
+		)
+		
+	</insert>
+	
+	<insert id="insertAuthInit" parameterType="string">
+		insert into auth_user (email,auth ) values(#{email}, 'ROLE_USER')
+	</insert>
+	
+	<insert id="insertAuthManager" parameterType="string">
+		insert into auth_user (email,auth ) values(#{email}, 'ROLE_MANAGER')
+	</insert>
+	
+	<insert id="insertAuthAdmin" parameterType="string">
+		insert into auth_user (email,auth ) values(#{email}, 'ROLE_ADMIN')
+	</insert>
+
+	<select id="selectOneUserByEmailAndPwd" resultType="uvo">
+		select email, name, nick_name, profile_img, curr_points,total_points, grade, reg_at, last_login, slang, adult, font_color from user where email = #{email} and pwd = #{pwd}
+	</select>
+
+	<select id="selectOneUserByEmail" parameterType="string" resultType="uvo">
+		 select email, name, nick_name,pwd, profile_img, curr_points,total_points, grade, reg_at, last_login, slang, adult, font_color from user where email = #{email}
+	</select>
+	
+	<select id="selectEmailByNameAndNickName" resultType="string">
+		select email from user where name = #{name} and nick_name = #{nickName}
+	</select>
+	
+	<select id="selectNickNameCount" parameterType="string" resultType="int">
+		select count(nick_name) from user where nick_name = #{nickName}
+	</select>
+	
+	<select id="selectUserList" parameterType="string" resultType="uvo">
+		select email, name, nick_name, profile_img, curr_points,total_points, grade, reg_at, last_login, slang, adult, font_color ,
+		(select count(ml.email) from m_like ml where ml.email = u.email)+0 +(select count(tl.email) from tv_like tl where tl.email = u.email) 'likeCnt'
+		, (select  count(mrv.writer) from m_review mrv where u.email = mrv.writer)+ (select  count(trv.writer) from tv_review trv where u.email = trv.writer) 'reviewCnt'
+		, (select  count(mr.email) from m_rating mr where u.email = mr.email)+(select  count(tr.email) from tv_rating tr where u.email = tr.email) 'ratingCnt'
+		from user u 
+		<if test="sortBy != null">
+			order by
+			<choose>
+			<when test='sortBy eq "likeCnt".toString()'>
+			(select count(ml.email) from m_like ml where ml.email = u.email)+0 +(select count(tl.email) from tv_like tl where tl.email = u.email) desc
+			</when>
+			<when test='sortBy eq "reviewCnt".toString()'>
+			(select  count(mrv.writer) from m_review mrv where u.email = mrv.writer) + (select  count(trv.writer) from tv_review trv where u.email = trv.writer) desc
+			</when>
+			<when test='sortBy == "ratingCnt".toString()'>
+			(select  count(mr.email) from m_rating mr where u.email = mr.email)+(select  count(tr.email) from tv_rating tr where u.email = tr.email) desc
+			</when>
+			<otherwise>
+				${sortBy} desc
+			</otherwise>
+			</choose>
+		</if>
+		
+	</select>
+	
+	
+
+	
+	<select id="selectAuths" parameterType="string" resultType="authVO">
+		select * from auth_user where email = #{email}
+	</select>
+	
+	<select id="selectPoint" parameterType="string" resultType="int">
+		select curr_points from user where email = #{email}
+	</select>
+	
+	<select id="selectUserTVAvgRating" resultType="double">
+		select round(avg(rating), 1) from tv_rating where email = #{email}
+	</select>
+	
+	<select id="selectUserMovieAvgRating" parameterType="string" resultType="double">
+		select round(avg(rating), 1) from m_rating where email = #{email}
+	</select>
+	
+	<!-- 평점 분포 -->
+	
+	<select  id="selectUserMovieRateData" parameterType="string" resultType="urd">
+	SELECT rating rate, count(mid) cnt
+	from m_rating mr 
+	where email = #{email}
+	group by rating, email
+	order by email, rating
+	</select>
+	
+	<select id="selectUserTVRateData" parameterType="string" resultType="urd">
+		SELECT rating rate, count(tvid) cnt
+		from tv_rating
+		where email = #{email}
+		group by rating, email
+		order by email, rating
+	</select>
+	
+	<!-- 시청한 장르 가져오기 -->
+	
+	<select id="selectUserMovieWatchedList" parameterType="string" resultType="mvvo">
+		SELECT m.title , m.genres 
+		from m_rating mr left join movie m on mr.mid = m.mid 
+		where mr.email = #{email}
+		union
+		select m.title, m.genres 
+		from m_review mr left join movie m on mr.mid = m.mid 
+		where mr.writer = #{email}
+	</select>
+	
+	<select id="selectUserTVWatchedList" parameterType="string" resultType="tvvo">
+		select t.title , t.genres 
+		from tv_rating tr left join tv t on tr.tvid = t.tvid 
+		where tr.email = #{email}
+		union
+		select t.title, t.genres 
+		from tv_review tr left join tv t on tr.tvid = t.tvid 
+		where tr.writer = #{email}
+	</select>
+	
+	<update id="updatePwd">
+		update user set pwd = #{pwd} where email = #{email}
+	</update>
+	
+	<update id="updateNickName" >
+		update user set nick_name = #{nickName} where email = #{email} 
+	</update>
+	
+	<update id="updatePointUp">
+		update user set 
+		curr_points = curr_points + #{point} 
+		, total_points = total_points + #{point} 
+		where email = #{email}
+	</update>
+	
+	<update id="updatePointDown">
+		update user set 
+		curr_points = curr_points - #{point} 
+		where email = #{email}
+	</update>
+	
+	<update id="updateProfileImg" parameterType="string">
+		update user set profile_img = #{img} where email = #{email}
+	</update>
+	
+	<update id="updateSlang">
+		update user set slang = #{value} where email = #{email}
+	</update>
+	
+	<update id="updateAdult">
+		update user set adult = #{value} where email = #{email}
+	</update>
+	
+	<update id="updateLastLogin" parameterType="string">
+		update user set last_login = now() where email = #{email}
+	</update>
+	
+	<update id="updateFontColor">
+		update user set font_color = #{color} where email = #{email}
+	</update>
+	
+	<update id="updateGrade">
+		update user set grade = #{grade} where email = #{email}
+	</update>
+	
+	<delete id="deleteUser">
+		delete from user where email = #{email} and pwd = #{pwd}
+	</delete>
+
+</mapper>

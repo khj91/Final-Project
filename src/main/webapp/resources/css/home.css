@@ -1,0 +1,117 @@
+
+
+#homeContainer {
+  padding: 50px;
+}
+/* search */
+
+
+.searchDiv {
+  text-align: center;
+  padding-top: 40px;
+  width: 80%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#searchform {
+}
+
+#searchInput {
+  border: 3px solid greenyellow;
+  padding: 5px 10px;
+  width: 100%;
+  border-radius: 30px;
+  height: 50px;
+}
+
+#searchBtn {
+  position: absolute;
+  right: 0;
+  top: 20;
+  height: 50px;
+  width: 80px;
+  color: #fff;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(45deg, rgb(30, 213, 169), rgb(1, 180, 228));
+}
+
+
+/* card */
+.list {
+  margin-bottom: 30px;
+}
+
+.listName {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.7rem;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+.listName span {
+  margin-right: 20px;
+}
+.listName button {
+  margin: 0 10px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+
+  overflow: scroll;
+  height: 350px;
+  -ms-overflow-style: none; /* IE and Edge */
+   scrollbar-width: none; 
+  
+}
+
+#trendCardContainer{
+	  background-image: url("/fileUpload/chart.jpg");
+  background-size: contain;
+}
+
+.cardContainer::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+.movieCard {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.movieCard {
+  width: 150px;
+  margin: 10px;
+}
+
+.movieCard a img {
+  width: 150px;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 4px 18px -6px rgba(0,0,0,0.68); 
+box-shadow: 1px 4px 18px -6px rgba(0,0,0,0.68);
+}
+
+.movieCard a {
+	border-radius: 10px;
+	color: black;
+}
+
+.cardTitle a {
+  font-size: 1.2rem;
+  font-weight: bolder;
+  text-decoration: none;
+}
+.cardDesc {
+  padding: 10px;
+  border-radius: 10px;/*  */
+}
+.cardSub {
+  font-size: 0.9rem;
+  color: lightslategrey;
+}

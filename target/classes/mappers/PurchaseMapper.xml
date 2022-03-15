@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springprj.www.repository.purchase.PurchaseDAO">
+	<insert id="insertProduct" parameterType="pdvo">
+		insert into purchase(email, category, sname, value, price)
+		values(#{email}, #{category}, #{sname}, #{value}, #{price})
+	</insert>
+	
+	<select id="selectListPoster" parameterType="string" resultType="pdvo">
+		select  sname, value, price, purch_date
+		from purchase
+		where category = 2 and email = #{email}
+	</select>
+	
+	<select id="selectListFontColor" parameterType="string" resultType="pdvo">
+		select sname, value, price, purch_date
+		from purchase
+		where category = 1 and email = #{email}
+	</select>
+	
+	<select id="selectListAllProduct" parameterType="string" resultType="pdvo">
+		select * from purchase where email = #{email}
+	</select>
+	
+	<delete id="deleteProduct" parameterType="long">
+		delete from purchase where sid = #{sid}
+	</delete>
+	
+	<delete id="deleteAllProduct" parameterType="string">
+		delete from purchase where email = #{email}
+	</delete>
+	
+</mapper>

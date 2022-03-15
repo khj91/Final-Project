@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springprj.www.repository.mBoard.MCommentDAO">
+	<insert id="insertMComment" parameterType="mcvo">
+		insert into m_comment (mb_id, writer, content)
+		values (#{mbId}, #{writer}, #{content})
+	</insert>
+	<select id="selectListMComment" resultType="mcvo">
+		select b.mc_id, mb_id, writer, content, mod_at
+		from (
+			select mc_id from m_comment
+			where mb_id = #{mbId}
+			order by mc_id
+			limit #{pgvo.pageStart}, #{pgvo.qty}
+		)a inner join m_comment b
+		on a.mc_id = b.mc_id
+	</select>
+	<select id="selectOneMCommentTotalCount" parameterType="long" resultType="int">
+		select count(mc_id) from m_comment where mb_id = #{mbId}
+	</select>
+	<update id="updateMComment" parameterType="mcvo">
+		update m_comment
+		set content = #{content}, mod_at = now()
+		where mc_id = #{mcId}
+	</update>
+	<delete id="deleteOneMComment" parameterType="long">
+		delete from m_comment where mc_id = #{mcId}
+	</delete>
+	<delete id="deleteAllMComment" parameterType="long">
+		delete from m_comment where mb_id = #{mbId}
+	</delete>
+	<select id="selectOneMComment" parameterType="long" resultType="long">
+		select mb_id from m_comment where mc_id = #{mcId}
+	</select>
+</mapper>

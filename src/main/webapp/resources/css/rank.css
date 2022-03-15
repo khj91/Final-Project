@@ -1,0 +1,79 @@
+.content_wrap {
+	   margin: auto;
+	   width: 85%;
+	   min-height:700px;
+	   border:1px solid black;
+	 
+}
+.content_subject {
+	   font-size: 40px;
+	   font-weight: bolder;
+	   padding-left: 15px;
+	   background-color: rgb(91, 189, 250);
+	   height: 80px;
+	   line-height: 80px;
+	   color: white;	
+}
+span.content a img {        
+             width: 45px;
+             height: 45px;
+             border-radius: 50%;
+             border: none;
+             margin: 0;
+             padding: 0;
+             
+  }
+td { 
+	   color: #000; 
+             font : 16px "source Sans Pro", Arial, sans-serif;
+}
+.detail {
+	   position: absolute;
+	   margin-left:4px;
+}
+.detail h3 {
+	font-weight: 900;
+}
+p {
+	font: 13px "source Sans Pro", Arial, sans-serif;
+}	
+
+.leaderboard td h3 a {
+	font: 19.2px "source Sans Pro", Arial, sans-serif;
+	color: #000;
+	text-decoration: none;
+	font-weight: 600px;
+	cursor: pointer;
+}
+ul {
+	list-style: none;
+	text-align: center;
+}
+.table_wrap {
+	text-align: center;
+	margin-bottom: 40px;
+}
+h4 {
+	margin-right: 20px;
+	margin-bottom: 20px;
+	font-weight: bold;
+	color: #082546;
+}
+.leaderboard {
+   width: 240px;
+   margin: 40 auto 0 auto;
+}
+.title {
+	color: #fff;
+}
+.con1 {
+	font-size: 16px;
+}
+.comment {
+	font: 24px "source Sans Pro", Arial, sans-serif;
+	color: #000;
+	margin: 50px 0px 30px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springprj.www.repository.notice.NoticeDAO">
+	<insert id="insertNotice" parameterType="nvo">
+		insert into notice (email, title, content)
+		values (#{email}, #{title}, #{content})
+	</insert>
+	<select id="selectListNotice" resultType="nvo">
+		select b.nid, title, b.email, mod_at, read_count, u.nick_name
+      from (
+         select nid from notice
+         where nid > 0
+         order by nid desc
+         limit #{pageStart}, #{qty}
+      ) a left join notice b
+      on a.nid = b.nid
+      left join user u
+      on b.email = u.email
+	</select>
+	<update id="updateNotice" parameterType="nvo">
+		update notice set
+		title = #{title}, content = #{content}, mod_at = now()
+		where nid = #{nid}
+	</update>
+	<select id="selectOneNotice" parameterType="long" resultType="nvo">
+		select nid, title, n.email, mod_at, read_count, u.nick_name 
+		from notice n left join user u
+		on n.email = u.email
+		where nid = #{nid}
+	</select>
+	<delete id="deleteNotice" parameterType="long">
+		delete from notice where nid = #{nid}
+	</delete>
+	<select id="selectOneTotalCount" parameterType="pgvo" resultType="int">
+		select count(nid) from notice where nid > 0
+	</select>
+	<update id="updateNoticeReadCount">
+		update notice set read_count = read_count + #{cnt} where nid = #{nid}
+	</update>
+</mapper>

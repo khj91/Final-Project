@@ -1,0 +1,144 @@
+*{
+    box-sizing: border-box;
+	font-family: sans-serif;
+}
+.wrapper{
+    display: block;
+    margin: 0 auto;
+    width: 700px;
+}
+.title{
+    font-size: 2.5em;
+}
+.posterSize{
+    width: 210px;
+    height: 250px;
+}
+.detAlign, .witAlign, .titAlign{
+    border: 0;
+    text-align: center;
+    width: 80%;
+}
+.detAlign{
+    margin-left: 10px;
+}
+.witAlign{
+    margin-left: 20px;
+}
+.titAlign{
+    margin-left: 30px;
+}
+.modTitle{
+    margin-left: 70px;
+    text-align: center;
+    width: 70%;
+}
+.regBox{
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+.regTop{
+    margin: 10px;
+}
+.regImg, .regImg > img{
+    width: 200px;
+    height: 220px;
+    display: inline-block;
+}
+.likeHateBox{
+    display: inline-block;
+    margin-left: 10px;
+}
+.funColor, .funColor > button{
+    color: orange;
+    display: inline-block;
+}
+.LHBtn{
+    border: 0;
+    background-color: white;
+}
+.clickLHBtn{
+    font-weight: bold;
+    text-decoration: underline;
+}
+.regText{
+    margin-top: 10px;
+}
+.contentBox{
+    width: 95%;
+    margin: 10px;
+    border: 1px solid grey;
+}
+#content{
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+}
+.hBtn{
+    border: 0;
+    background-color: white;
+    color: red;
+}
+.btnBox{
+    width: 100%;
+}
+.editBox{
+    float: right;
+}
+#cmtListArea{
+    width: 100%;
+}
+
+#cmtText{
+    width: 450px;
+}
+.cmtBox{
+    width: 100%;
+}
+.cmtContBox{
+    display: inline-block;
+    width: 95%;
+}
+.imgSize{
+    width: 50px;
+    height: 50px;
+}
+.cmtWir{
+    display: inline-block;
+    width: 170px;
+}
+.cmtDate{
+    float: right;
+}
+.mod{
+    border: 0;
+    color: orange;
+}
+.del{
+    border: 0;
+    color: red;
+}
+.likeListArea{
+    width:466px;
+    height:100px;
+    white-space:nowrap;
+    overflow-x:scroll;
+}
+.likeTotalCnt{
+    width:466px;
+    text-align: right;
+}
+.hListOne{
+    text-align: center;
+    display: inline-block;
+    width:80px;
+    height:74px;
+    white-space:nowrap;
+}
+.imgAlign{
+    text-align: center;
+}
+.hListNick > a{
+    text-decoration: none;
+    color: black;
+}

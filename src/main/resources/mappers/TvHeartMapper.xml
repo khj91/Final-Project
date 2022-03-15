@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springprj.www.repository.tvBoard.TvHeartDAO">
+	<insert id="insertTvHeart" parameterType="tvhvo">
+		insert into tv_heart (tvb_id, email)
+		values (#{tvbId}, #{email})
+	</insert>
+	<select id="selectListTvHeart" resultType="tvhvo">
+		select email from tv_heart where tvb_id = #{tvbId}
+	</select>
+	<delete id="deleteOneTvHeart">
+		delete from tv_heart where email = #{authEmail} and tvb_id = #{tvbId}
+	</delete>
+	<delete id="deleteAllTvHeart" parameterType="long">
+		delete from tv_heart where tvb_id = #{tvbId}
+	</delete>
+	<select id="selectOneTotalCount" parameterType="pgvo" resultType="int">
+		select count(email) from tv_heart where tvb_id = #{tvbId}
+	</select>
+	<select id="heartCheck" resultType="int">
+		select exists (select * from tv_heart where tvb_id = #{tvbId} and email = #{authEmail}) as success
+	</select>
+</mapper>

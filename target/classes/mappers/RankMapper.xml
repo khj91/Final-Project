@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springprj.www.repository.rank.RankDAO">
+	<select id="selectPointList" resultType="prvo">
+      select profile_img, reg_at, nick_name, total_points
+      from user 
+      order by total_points desc limit 50
+   </select>
+   <select id="selectPointLowList" resultType="prvo">
+      select profile_img, reg_at, nick_name, total_points
+      from user 
+      order by total_points asc limit 50
+   </select>
+<select id="selectMCommentList" resultType="crvo">
+      select count(writer) as commentQty,
+      (select nick_name from user u where m.writer = u.email ) as nick_name,
+      (select profile_img from user u where m.writer = u.email ) as profile_img,
+      (select reg_at from user u where m.writer = u.email ) as reg_at
+      from m_comment m
+      group by writer 
+      order by count(writer)
+      desc limit 50;
+   </select>
+   <select id="selectTCommentList" resultType="crvo">
+      select count(writer) as commentQty,
+      (select nick_name from user u where tv.writer = u.email ) as nick_name,
+      (select profile_img from user u where tv.writer = u.email ) as profile_img,
+      (select reg_at from user u where tv.writer = u.email ) as reg_at
+      from tv_comment tv 
+      group by writer 
+      order by count(writer)
+      desc limit 50;
+   </select>
+   <select id="selectTReadCountList" resultType="brvo">
+      select sum(read_count) as read_count,
+      (select nick_name from user u where m.writer = u.email) as nick_name,
+      (select profile_img from user u where m.writer = u.email ) as profile_img,
+      (select reg_at from user u where m.writer = u.email ) as reg_at 
+      from m_board m 
+      group by writer 
+      order by sum(read_count)
+      desc limit 50;
+   </select>
+   <select id="selectMReadCountList" resultType="brvo">
+      select sum(read_count) as read_count,
+      (select nick_name from user u where tv.writer = u.email ) as nick_name,
+      (select profile_img from user u where tv.writer = u.email ) as profile_img,
+      (select reg_at from user u where tv.writer = u.email ) as reg_at 
+      from tv_board tv 
+      group by writer 
+      order by sum(read_count)
+      desc limit 50;
+   </select>
+</mapper>

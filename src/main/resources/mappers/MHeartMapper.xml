@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springprj.www.repository.mBoard.MHeartDAO">
+	<insert id="insertMHeart" parameterType="mhvo">
+		insert into m_heart (mb_id, email)
+		values (#{mbId}, #{email})
+	</insert>
+	<select id="selectListMHeart" resultType="mhvo">
+		select email from m_heart where mb_id = #{mbId}
+	</select>
+	<delete id="deleteOneMHeart">
+		delete from m_heart where email = #{authEmail} and mb_id = #{mbId}
+	</delete>
+	<delete id="deleteAllMHeart" parameterType="long">
+		delete from m_heart where mb_id = #{mbId}
+	</delete>
+	<select id="selectOneTotalCount" parameterType="pgvo" resultType="int">
+		select count(email) from m_heart where mb_id = #{mbId}
+	</select>
+	<select id="heartCheck" resultType="int">
+		select exists (select * from m_heart where mb_id = #{mbId} and email = #{authEmail}) as success
+	</select>
+</mapper>

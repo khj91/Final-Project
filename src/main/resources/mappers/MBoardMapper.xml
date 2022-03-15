@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springprj.www.repository.mBoard.MBoardDAO">
+	<insert id="insertMBoard" parameterType="mbvo">
+		insert into m_board (writer, mid, title, like_hate, content, poster, movie_title, reg_date)
+		values (#{writer}, #{mid}, #{title}, #{likeHate}, #{content}, #{poster}, #{movieTitle}, #{regDate})
+	</insert>
+	<sql id="search">
+		<if test="type != null">
+			<trim prefix="and (" suffix=")" prefixOverrides="OR">
+				<foreach collection="typeToArray" item="type">
+					<trim prefix="OR">
+						<choose>
+							<when test="type == 't'.toString()">
+								b.title like concat('%',#{keyword},'%')
+							</when>
+							<when test="type == 'm'.toString()">
+								movie_title like concat('%',#{keyword},'%')
+							</when>
+							<when test="type == 'w'.toString()">
+								writer like concat('%',#{keyword},'%')
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</if>
+	</sql>
+	<select id="selectLikeListMBoardPaging" parameterType="pgvo" resultType="mbvo">
+		select b.mb_id, b.title, writer, mod_at, read_count, poster, movie_title, reg_date, cmt_qty, u.nick_name,
+		(select count(*) from m_heart h where h.mb_id = b.mb_id) as heart
+		from (
+			select mb_id from m_board
+			where like_hate = 1
+			<include refid="search"></include>
+			order by mb_id desc
+			limit #{pageStart}, #{qty}
+		) a left join m_board b
+		on a.mb_id = b.mb_id
+		left join user u
+		on b.writer = u.email
+	</select>
+	<select id="selectHateListMBoardPaging" parameterType="pgvo" resultType="mbvo">
+		select b.mb_id, b.title, writer, mod_at, read_count, poster, movie_title, reg_date, cmt_qty, u.nick_name,
+      (select count(*) from m_heart h where h.mb_id = b.mb_id) as heart
+      from (
+         select mb_id from m_board
+         where like_hate = 0
+         <include refid="search"></include>
+         order by mb_id desc
+         limit #{pageStart}, #{qty}
+      ) a left join m_board b
+      on a.mb_id = b.mb_id
+      left join user u
+      on b.writer = u.email
+	</select>
+	<update id="updateMBoard" parameterType="mbvo">
+		update m_board set
+		title = #{title}, content = #{content}, mod_at = now()
+		where mb_id = #{mbId}
+	</update>
+	<select id="selectOneMBoard" parameterType="long" resultType="mbvo">
+		select mb_id, title, writer, mod_at, content, poster, movie_title, reg_date, mid, u.nick_name 
+		from m_board m left join user u
+		on m.writer = u.email
+		where mb_id = #{mbId}
+	</select>
+	<delete id="deleteMBoard" parameterType="long">
+		delete from m_board where mb_id = #{mbId}
+	</delete>
+	<select id="selectOneLikeTotalCount" parameterType="pgvo" resultType="int">
+		select count(mb_id) from m_board where like_hate = 1
+		<include refid="search"></include>
+	</select>
+	<select id="selectOneHateTotalCount" parameterType="pgvo" resultType="int">
+		select count(mb_id) from m_board where like_hate = 0
+		<include refid="search"></include>
+	</select>
+	<update id="updateMBoardReadCount">
+		update m_board set read_count = read_count + #{cnt} where mb_id = #{mbId}
+	</update>
+	<update id="updateMBoardCmtQty">
+		update m_board set cmt_qty = cmt_qty + #{cnt} where mb_id = #{mbId}
+	</update>
+	<select id="relatedMovieList" parameterType="pgvo" resultType="mbvo">
+		select b.mb_id, b.title, writer, mod_at, read_count, mid, poster, movie_title, reg_date, cmt_qty, u.nick_name,
+		(select count(*) from m_heart h where h.mb_id = b.mb_id) as heart
+		from (
+			select mb_id from m_board
+			where mid = #{mid}
+			order by mb_id desc
+			limit #{pageStart}, #{qty}
+		) a left join m_board b
+		on a.mb_id = b.mb_id
+		left join user u
+		b.writer = u.email
+	</select>
+	<select id="selectOneRelatedTotalCount" resultType="int">
+		select count(mb_id) from m_board where mid = #{mid}
+		<include refid="search"></include>
+	</select>
+</mapper>

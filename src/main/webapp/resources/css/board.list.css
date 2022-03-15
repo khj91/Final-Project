@@ -1,0 +1,56 @@
+*{
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+.wrapper{
+    display: block;
+    margin: 0 auto;
+    width: 900px;
+}
+.title{
+	font-size: 2.5em;
+	display: inline-block;
+}
+.searchBar{
+	position: absolute;
+	right: 20px;
+	top: 10%;
+	display: table-cell;
+	vertical-align: middle;
+}
+.searchSelc{
+	width: 160px;
+	height: 38px;
+}
+.searchInpt{
+	width: 230px;
+}
+#inpSearch{
+	height: 36px;
+	border: 1px solid;
+	border-radius: 3px;
+}
+.likeHateText, .likeHateText > a{
+	color: black;
+	text-decoration: none;
+	font-size: 1.2em;
+}
+.likeHateText > a:hover{
+	font-weight: bolder;
+	color: rgb(91, 189, 250);
+}
+.boardTr{
+	color: white;
+	background-color: #082546;
+}
+.listPoster{
+	width: 70px;
+	height: 90px;
+}
+.heartColor{
+	color: red;
+}
+.tableText a{
+	text-decoration: none;
+	color: black;
+}

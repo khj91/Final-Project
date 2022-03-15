@@ -1,0 +1,71 @@
+.dropdownNav:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+nav {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-direction: row;
+  border: 1px solid #000;
+  height: 60px;
+  padding: 0 20px;
+  justify-content: space-between;
+  background-color: #082546;
+  align-items: center;
+  flex-wrap:wrap;
+  align-content: center;
+}
+
+a{
+	text-decoration: none;
+}
+
+
+#logo {
+  font-size: 1.8rem;
+  color: #57b4d8;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin: 30px;
+}
+.menu {
+  display: inline-block;
+  margin: 0 10px;
+  background-color: #082546;
+  color: #fff;
+}
+
+.menu button{
+	color: #fff;
+}
+
+
+
+#left {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+#right {
+  display: flex;
+  flex-direction: row;
+}
+.movieList {
+  height: 10rem;
+  border-bottom: 1px #aab1b1;
+}
+.movieListContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+

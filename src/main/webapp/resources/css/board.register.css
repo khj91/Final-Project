@@ -1,0 +1,71 @@
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.wrapper{
+    display: block;
+    margin: 0 auto;
+    width: 700px;
+}
+.posterSize{
+    width: 210px;
+    height: 250px;
+}
+.title, .regAlign, .witAlign{
+    border: 0;
+}
+.title{
+    font-size: 2.5em;
+}
+.regAlign{
+    text-align: center;
+    margin-left: 10px;
+}
+.witAlign{
+    text-align: center;
+    margin-left: 20px;
+}
+.titAlign{
+    margin-left: 30px;
+    width: 80%;
+}
+.notTit{
+    margin-left: 45px;
+    width: 80%;
+}
+.regTop{
+    margin: 10px;
+}
+.regImg, .regImg > img{
+    width: 200px;
+    height: 220px;
+    display: inline-block;
+}
+.likeHateBox{
+    display: inline-block;
+    margin-left: 10px;
+}
+.funColor{
+    display: inline-block;
+}
+.LHBtn{
+    border: 0;
+    background-color: white;
+}
+.clickLHBtn{
+    font-weight: bold;
+    color: rgb(91, 189, 250);
+    text-decoration: underline;
+}
+.regText{
+    margin-top: 10px;
+}
+.contentBox{
+    width: 95%;
+    margin: 10px;
+}
+#content{
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+}

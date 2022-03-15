@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springprj.www.repository.shop.ColorDAO">
+	<insert id="insertColor" parameterType="cvo">
+	   insert into shop
+	    (sname, category, price, value)
+	   values
+	    (#{sname}, #{category}, #{price}, #{value}) 
+	</insert>
+	<select id="selectListColor" resultType="cvo">
+	    select * from shop order by sid desc
+	</select>
+	<delete id="deleteColor" parameterType="long">
+	    delete from shop where sid = #{sid}
+	</delete>
+	<select id="selectOneTotalCount" parameterType="pgvo" resultType="int">
+		select count(sid) from shop where sid > 0
+	</select>
+	<select id="selectListColorPaging" parameterType="pgvo" resultType="cvo">
+	     select a.sid, sname, category, price, value
+	     from (
+	     	select sid from shop
+	     	where sid > 0
+	     	order by sid desc
+	     	limit #{pageStart}, #{qty}
+	     ) a left join shop b
+	     on a.sid= b.sid
+	</select>
+</mapper>

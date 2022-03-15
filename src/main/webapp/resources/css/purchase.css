@@ -1,0 +1,92 @@
+#settingContainer {
+	display: flex;
+	flex-direction: row;
+	padding: 40px;
+}
+
+#leftMenu {
+	-webkit-box-shadow: 1px 2px 9px -1px rgba(0, 0, 0, 0.35);
+	box-shadow: 1px 2px 9px -1px rgba(0, 0, 0, 0.35);
+	width: 220px;
+	border-radius: 8px;
+}
+
+#settingTitle {
+	background-color: rgb(235, 92, 216);
+	color: #fff;
+	padding: 15px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.settingMenu {
+	padding: 10px 20px;
+}
+
+.settingMenu a {
+	text-decoration: none;
+	color: black;
+}
+
+#currMenu {
+	color: rgb(235, 92, 216);
+}
+
+#settingMain {
+	padding: 0 40px;
+	width: 100%;
+}
+
+#settingMain h4 {
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.setting {
+	margin: 15px 0px;
+}
+
+#fontColorDiv {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.fontColor {
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 12px;
+	font-weight: bold;
+	color: #fff;
+}
+
+.buyAble:hover {
+	cursor: pointer;
+	border: 3px solid #fff;
+}
+
+.selected {
+	border: 3px solid #fff;
+}
+
+#buyForm {
+	text-align: end;
+	margin: 40px;
+}
+
+#buyBtn {
+	background-color: rgb(91, 189, 250);
+	color: #fff;
+	border-radius: 8px;
+	margin-right: 10px;
+}
+
+#buyBtn:hover {
+	background-color: black;
+}

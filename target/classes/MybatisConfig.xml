@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+	<typeAliases>
+		<!-- 회원/ security -->
+		<typeAlias type="com.springprj.www.security.UserVO"
+			alias="uvo" />
+		<typeAlias type="com.springprj.www.security.AuthVO"
+			alias="authVO" />
+		<typeAlias type="com.springprj.www.domain.PagingVO" alias="pgvo"/>
+		<!-- 유저 평점 분포 vo -->
+		<typeAlias type="com.springprj.www.domain.user.UserRateData" alias="urd"/>
+		
+
+		<!-- 영화 tv관련 -->
+		<typeAlias type="com.springprj.www.domain.movietv.ReviewVO"	alias="rvvo" />
+		<typeAlias type="com.springprj.www.domain.movietv.ReviewDTO" alias="rvdto" />
+		<typeAlias type="com.springprj.www.domain.movietv.RatingVO" alias="rtvo" />
+		<typeAlias type="com.springprj.www.domain.movietv.LikeVO" alias="lvo" />
+		<typeAlias type="com.springprj.www.domain.movietv.MovieVO" alias="mvvo" />
+		<typeAlias type="com.springprj.www.domain.movietv.TVVO"	alias="tvvo" />
+		
+		<!-- shop 관련 -->
+		
+		<typeAlias type="com.springprj.www.domain.shop.ColorVO" alias="cvo"/>
+		<typeAlias type="com.springprj.www.domain.shop.ShopVO" alias="svo"/>
+		<typeAlias type="com.springprj.www.domain.shop.ProductVO" alias="pdvo"/>
+		
+		<typeAlias type="com.springprj.www.domain.PointRankVO" alias="prvo"/>
+		<typeAlias type="com.springprj.www.domain.CommentRankVO" alias="crvo"/>
+		<typeAlias type="com.springprj.www.domain.BoardRankVO" alias="brvo"/>
+
+		<!--  -->
+		<typeAlias type="com.springprj.www.domain.notice.NoticeVO" alias="nvo"/>
+		<typeAlias type="com.springprj.www.domain.mBoard.MBoardVO" alias="mbvo"/>
+		<typeAlias type="com.springprj.www.domain.mBoard.MCommentVO" alias="mcvo"/>
+		<typeAlias type="com.springprj.www.domain.mBoard.MHeartVO" alias="mhvo"/>
+		<typeAlias type="com.springprj.www.domain.tvBoard.TvBoardVO" alias="tvbvo"/>
+		<typeAlias type="com.springprj.www.domain.tvBoard.TvCommentVO" alias="tvcvo"/>
+		<typeAlias type="com.springprj.www.domain.tvBoard.TvHeartVO" alias="tvhvo"/>
+		<typeAlias type="com.springprj.www.repository.notice.NoticeDAO" alias="ndao"/>
+		<typeAlias type="com.springprj.www.repository.mBoard.MBoardDAO" alias="mbdao"/>
+		<typeAlias type="com.springprj.www.repository.mBoard.MCommentDAO" alias="mcdao"/>
+		<typeAlias type="com.springprj.www.repository.mBoard.MHeartDAO" alias="mhdao"/>
+		<typeAlias type="com.springprj.www.repository.tvBoard.TvBoardDAO" alias="tvbdao"/>
+		<typeAlias type="com.springprj.www.repository.tvBoard.TvCommentDAO" alias="tvcdao"/>
+		<typeAlias type="com.springprj.www.repository.tvBoard.TvHeartDAO" alias="tvhdao"/>
+	</typeAliases>
+</configuration>

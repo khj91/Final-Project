@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.searchBox{
+    position: relative;
+    height: 300px;
+}
+.searchPos{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.wrapper{
+    display: block;
+    margin: 0 auto;
+    width: 95%;
+}
+.explain{
+    font-size: small;
+}
+.tv{
+    width: 14rem;
+    display: inline-block;
+    margin: 5px;
+}
+.tvCard{
+    width: 14rem;
+    height: 24rem;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px;
+}
+.tvPoster{
+    width: 14rem;
+    height: 250px;
+}
+.cTitle{
+    display: inline-block;
+    width: 190px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+}
+.voteGreen{
+    color : green;
+}
+.voteOrange{
+    color : orange;
+}
+.voteRed{
+    color : red;
+}
+.rDate{
+    width: 100%;
+    color: gray;
+}
+.dateAlign{
+    text-align: right;
+}
+#tvSelctBtn{
+    text-align: right;
+}
+.btnAlign{
+    text-align: right;
+}

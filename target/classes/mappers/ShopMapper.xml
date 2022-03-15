@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springprj.www.repository.shop.ShopDAO">
+	<insert id="insertShop" parameterType="svo">
+		insert into purchase (sid, email, sname, category, price, value)
+		values (#{sid}, #{email}, #{sname}, #{category}, #{price}, #{value})
+	</insert>
+	<select id="selectListShop" resultType="svo">
+		select sid, email, sname, category, price, value from purchase order by sid desc	
+	</select>
+	<select id="selectOneShop" parameterType="long" resultType="svo">
+		select * from purchase where sid = #{sid}
+	</select>
+	<delete id="deleteShop" parameterType="long">
+		delete from purchase where sid = #{sid}
+	</delete>
+	<sql id="search">
+		<if test="type != null">
+			<trim prefix="and (" suffix=")" prefixOverrides="OR">
+				<foreach collection="typeToArray" item="type">
+					<trim prefix="OR">
+					 	<choose>
+					 		<when test="type == 'n.toString()">
+					 			sname like concat('%',#{keyword},'%')
+					 		</when>
+					 		<when test="type == 'd.toString()">
+					 			sid like concat('%',#{keyword},'%')
+					 		</when>
+					 		<when test="type == 'm.toString()">
+					 			email like concat('%',#{keyword},'%')
+					 		</when>
+					 	</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</if>
+	</sql>
+	<select id="selectListShopPaging" parameterType="pgvo" resultType="svo">
+		select a.sid, email, sname, category, price, value
+		from (
+		      select sid from purchase
+		      where sid > 0
+		      <include refid="search"></include>
+		      order by sid desc
+		      limit #{pageStart}, #{qty}
+		) a left join purchase b
+		on a.sid = b.sid
+	</select>
+	<select id="selectOneTotalCount" parameterType="pgvo" resultType="int">
+		select count(sid) from purchase where sid > 0
+		
+	</select>
+</mapper>
